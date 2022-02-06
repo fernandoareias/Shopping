@@ -2,17 +2,17 @@
 
 namespace Shopping.Cliente.API.Models.VOs
 {
-    public class Email : Entity
+    public class Email 
     {
         // EF
         protected Email() { }
 
-        public Email(string address)
+        public Email(string endereco)
         {
-            Address = address;
+            Endereco = endereco;
         }
 
-        public string Address { get; private set; }
+        public string Endereco { get; private set; }
 
     }
 }
