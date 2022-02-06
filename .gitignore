@@ -7,6 +7,7 @@
 /src/services/Shopping.Catalogo.API/obj
 /src/services/Shopping.Catalogo.API/appsettings.Development.json
 /src/services/Shopping.Cliente.API/obj
+/src/services/Shopping.Cliente.API/bin
 /src/services/Shopping.Cliente.API/appsettings.Development.json
 /src/services/Shopping.Identidade.API/obj
 /src/services/Shopping.Identidade.API/appsettings.Development.json
