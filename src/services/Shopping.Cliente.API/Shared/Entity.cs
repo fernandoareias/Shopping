@@ -10,6 +10,7 @@ namespace Shopping.Cliente.API.Shared
             Id = Guid.NewGuid();
         }
 
+
         #region Comparações 
 
         public override bool Equals(object obj)
