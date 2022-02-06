@@ -15,7 +15,7 @@ namespace Shopping.Cliente.API.Models.VOs
         public Guid ClienteId { get; private set; }
 
         // EF Relation
-        public Cliente Cliente { get; protected set; }
+        public Clientes Cliente { get; protected set; }
 
         public Endereco(string logradouro, string numero, string complemento, string bairro, string cep, string cidade, string estado, Guid clienteId)
         {

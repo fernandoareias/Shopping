@@ -2,7 +2,7 @@
 
 namespace Shopping.Cliente.API.Models.VOs
 {
-    public class Cpf : Entity
+    public class Cpf 
     {
         public Cpf(string numero)
         {
