@@ -3,3 +3,14 @@
 ################################################################################
 
 /src/services/Shopping.Carrinho.API/obj
+/src/services/Shopping.Carrinho.API/appsettings.Development.json
+/src/services/Shopping.Catalogo.API/obj
+/src/services/Shopping.Catalogo.API/appsettings.Development.json
+/src/services/Shopping.Cliente.API/obj
+/src/services/Shopping.Cliente.API/appsettings.Development.json
+/src/services/Shopping.Identidade.API/obj
+/src/services/Shopping.Identidade.API/appsettings.Development.json
+/src/services/Shopping.Pagamento.API/obj
+/src/services/Shopping.Pagamento.API/appsettings.Development.json
+/src/services/Shopping.Pedido.API/obj
+/src/services/Shopping.Pedido.API/appsettings.Development.json
