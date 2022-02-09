@@ -4,11 +4,17 @@ using System.Linq;
 
 namespace Shopping.Identidade.API.Shared.Notification
 {
-    public class Notification : INotification
+    public class NotificationService : INotificationService
     {
-        internal List<string> _errors { get; private set; }
 
-        IEnumerable<string> INotification.Erros { get => _errors; }
+        public NotificationService()
+        {
+            _errors = new List<string>();
+        }
+
+        internal List<string> _errors { get; private set; } 
+
+        IEnumerable<string> INotificationService.Erros { get => _errors; }
 
         public void AdicionarErro(string error)
         {

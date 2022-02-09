@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Shopping.Identidade.API.Shared.Notification
 {
-    public interface INotification
+    public interface INotificationService
     {
         IEnumerable<string> Erros
         {
