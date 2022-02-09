@@ -25,15 +25,15 @@ namespace Shopping.Identidade.API.Application
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
-        private readonly INotification _notification;
+        private readonly INotificationService _notification;
         private readonly IMessageBus _bus;
 
         public IdentityService(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             IOptions<AppSettings> appSettings,
-            IMessageBus bus, 
-            INotification notification
+            IMessageBus bus,
+            INotificationService notification
         )
         {
             _signInManager = signInManager;
@@ -137,6 +137,7 @@ namespace Shopping.Identidade.API.Application
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
                 Issuer = _appSettings.Emissor,
@@ -178,7 +179,7 @@ namespace Shopping.Identidade.API.Application
 
             try
             {
-                return await _bus.RequestAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(usuarioRegistrado);
+                return null;//await _bus.RequestAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(usuarioRegistrado);
             }
             catch
             {
