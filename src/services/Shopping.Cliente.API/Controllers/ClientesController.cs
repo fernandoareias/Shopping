@@ -3,6 +3,7 @@ using Shopping.Cliente.API.Application.Commands;
 using Shopping.Cliente.API.Application.Identity;
 using Shopping.Cliente.API.Models.Interfaces;
 using Shopping.Cliente.API.Shared.Mediator;
+using System;
 using System.Threading.Tasks;
 
 namespace Shopping.Cliente.API.Controllers
@@ -33,6 +34,13 @@ namespace Shopping.Cliente.API.Controllers
         {
             endereco.ClienteId = _user.ObterUserId();
             return CustomResponse(await _mediator.EnviarComando(endereco));
+        }
+
+        [HttpDelete("cliente/{idCliente}")]
+        public async Task<IActionResult> RemoverCliente(Guid idCliente)
+        {
+            
+            return null;
         }
     }
 }
