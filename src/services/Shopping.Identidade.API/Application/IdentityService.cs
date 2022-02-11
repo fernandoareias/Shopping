@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Shopping.Identidade.API.Application.Events;
 using Shopping.Identidade.API.Configuration;
 using Shopping.Identidade.API.Models;
+using Shopping.Identidade.API.Models.Events;
 using Shopping.Identidade.API.Models.Interfaces;
 using Shopping.Identidade.API.Shared.Integration;
-using Shopping.Identidade.API.Shared.Messages.Bus;
 using Shopping.Identidade.API.Shared.Notification;
 using Shopping.Identidade.API.Shared.Responses;
 using System;
@@ -26,20 +25,17 @@ namespace Shopping.Identidade.API.Application
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
         private readonly INotificationService _notification;
-        private readonly IMessageBus _bus;
 
         public IdentityService(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             IOptions<AppSettings> appSettings,
-            IMessageBus bus,
             INotificationService notification
         )
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _appSettings = appSettings.Value;
-            _bus = bus;
             _notification = notification;
         }
 
@@ -179,7 +175,7 @@ namespace Shopping.Identidade.API.Application
 
             try
             {
-                return null;//await _bus.RequestAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(usuarioRegistrado);
+                return null;//await _bus.Publisher(usuarioRegistrado);
             }
             catch
             {
