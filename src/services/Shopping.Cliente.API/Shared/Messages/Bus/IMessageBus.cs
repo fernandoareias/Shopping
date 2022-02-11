@@ -1,4 +1,4 @@
-﻿using EasyNetQ;
+﻿
 using Shopping.Cliente.API.Shared.Integration;
 using System;
 using System.Threading.Tasks;
@@ -8,7 +8,6 @@ namespace Shopping.Cliente.API.Shared.Messages.Bus
     public interface IMessageBus : IDisposable
     {
         bool IsConnected { get; }
-        IAdvancedBus AdvancedBus { get; }
 
         void Publish<T>(T message) where T : IntegrationEvent;
 
