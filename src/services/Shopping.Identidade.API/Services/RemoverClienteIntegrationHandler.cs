@@ -20,12 +20,10 @@ namespace Shopping.Identidade.API.Services
         
         private IConnection _connection;
         private IModel _channel;
-        private bool IsConnected;
         private readonly IServiceProvider _serviceProvider;
         public RemoverClienteIntegrationHandler(IServiceProvider serviceProvider)
         {
             TryConnect();
-            IsConnected = false;
             
             _serviceProvider = serviceProvider;
         }
@@ -82,7 +80,7 @@ namespace Shopping.Identidade.API.Services
 
         private void TryConnect()
         {
-            if (IsConnected) return;
+            if (_connection.IsOpen) return;
             // get by appsettings
             var connectionFactory = new ConnectionFactory
             {
