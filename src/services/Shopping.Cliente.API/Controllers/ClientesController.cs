@@ -36,6 +36,8 @@ namespace Shopping.Cliente.API.Controllers
             return CustomResponse(await _mediator.EnviarComando(endereco));
         }
 
+
+
         [HttpDelete("cliente/{idCliente}")]
         public async Task<IActionResult> RemoverCliente(Guid idCliente)
         {
