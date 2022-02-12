@@ -14,7 +14,7 @@ namespace Shopping.Identidade.API.Configurations
             services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<IIdentityService, IdentityService>();
 
-           
+            services.AddMessageBusConfiguration();
         }
     }
 }

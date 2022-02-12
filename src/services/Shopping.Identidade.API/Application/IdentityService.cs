@@ -45,6 +45,7 @@ namespace Shopping.Identidade.API.Application
             var result = await _signInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha,
                false, true);
 
+            
             if (result.Succeeded)
             {
                 return await GerarJwt(usuarioLogin.Email);

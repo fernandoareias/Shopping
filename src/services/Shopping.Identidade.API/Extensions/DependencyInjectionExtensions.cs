@@ -6,11 +6,9 @@ namespace Shopping.Identidade.API.Extensions
 {
     public static class DependencyInjectionExtensions
     {
-        public static IServiceCollection AddMessageBus(this IServiceCollection services, string connection)
+        public static IServiceCollection AddMessageBus(this IServiceCollection services)
         {
-            if (string.IsNullOrEmpty(connection)) throw new ArgumentNullException();
-
-            services.AddSingleton<IMessageBus>(new MessageBus(connection));
+            services.AddSingleton<IRabbitMessageBus, RabbitMessageBus>();
 
             return services;
         }

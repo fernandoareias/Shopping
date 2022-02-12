@@ -21,40 +21,56 @@ namespace Shopping.Identidade.API.Services
         private IConnection _connection;
         private IModel _channel;
         private readonly IServiceProvider _serviceProvider;
+        private bool IsConnected;
+
         public RemoverClienteIntegrationHandler(IServiceProvider serviceProvider)
         {
-            TryConnect();
             
             _serviceProvider = serviceProvider;
         }
 
+
+     
        
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        protected async override Task<Task> ExecuteAsync(CancellationToken stoppingToken)
         {
+            await Task.Yield();
             TryConnect();
-
-         
-            _channel.QueueDeclare(queue: new UsuarioRemovidoIntegrationEvent().MessageType, durable: false, exclusive: false, autoDelete: true, arguments: null);
-
-            var consumer = new EventingBasicConsumer(_channel);
-
-            consumer.Received += (model, ea) =>
+            try
             {
 
-                var decoder = Encoding.UTF8.GetString(ea.Body.ToArray());
+                if (IsConnected)
+                {
+                    _channel?.QueueDeclare(queue: new UsuarioRemovidoIntegrationEvent().MessageType, durable: false, exclusive: false, autoDelete: true, arguments: null);
 
-                var cliente = JsonSerializer.Deserialize<UsuarioRemovidoIntegrationEvent>(decoder);
+                    var consumer = new EventingBasicConsumer(_channel);
 
-                HandleMessage(cliente);
-               
-            };
+                    consumer.Received += (model, ea) =>
+                    {
 
-            _channel.BasicConsume(queue: new UsuarioRemovidoIntegrationEvent().MessageType,
-                                 autoAck: true,
-                                 consumer: consumer);
+                        var decoder = Encoding.UTF8.GetString(ea.Body.ToArray());
 
-            return Task.CompletedTask;
+                        var cliente = JsonSerializer.Deserialize<UsuarioRemovidoIntegrationEvent>(decoder);
+
+                        HandleMessage(cliente);
+
+                    };
+
+                    _channel.BasicConsume(queue: new UsuarioRemovidoIntegrationEvent().MessageType,
+                                         autoAck: true,
+                                         consumer: consumer);
+
+                }
+
+            }
+            catch (Exception)
+            {
+                TryConnect();
+            }
+
+            return await Task.FromResult(Task.CompletedTask);
         }
+
 
         private async void HandleMessage(UsuarioRemovidoIntegrationEvent content)
         {
@@ -78,10 +94,10 @@ namespace Shopping.Identidade.API.Services
         }
 
 
-        private void TryConnect()
+        private Task TryConnect()
         {
-            if (_connection.IsOpen) return;
-            // get by appsettings
+            if (_connection != null && _connection.IsOpen) return Task.CompletedTask;
+            
             var connectionFactory = new ConnectionFactory
             {
                 HostName = "localhost",
@@ -89,26 +105,36 @@ namespace Shopping.Identidade.API.Services
                 Password = "guest"
             };
 
-            var policy = Policy.Handle<RabbitMQ.Client.Exceptions.ConnectFailureException>()
-                .Or<BrokerUnreachableException>()
-                .WaitAndRetry(3, retryAttempt =>
-                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+            var policy = Policy.Handle<BrokerUnreachableException>().Or<Exception>()
+                .WaitAndRetry(retryCount: 2, sleepDurationProvider:retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 
-            policy.Execute(() =>
+            try
             {
-                _connection = connectionFactory.CreateConnection();
-                _channel = _connection.CreateModel();
-                if (!_connection.IsOpen) OnDisconnect();
-            });
+                policy.Execute(() =>
+                {
+                    _connection = connectionFactory.CreateConnection();
+                    IsConnected = _connection.IsOpen;
+                    _channel = _connection?.CreateModel();
+
+                    if (!IsConnected) OnDisconnect();
+
+                });
+            }
+            catch (Exception)
+            {
+                if (!IsConnected) OnDisconnect();
+            }
+
+            return Task.CompletedTask;
         }
 
-        private void OnDisconnect()
+        private async void  OnDisconnect()
         {
             var policy = Policy.Handle<RabbitMQ.Client.Exceptions.ConnectFailureException>()
                 .Or<BrokerUnreachableException>()
-                .RetryForever();
+                .RetryForeverAsync();
 
-            policy.Execute(TryConnect);
+            await policy.ExecuteAsync(TryConnect);
         }
 
 

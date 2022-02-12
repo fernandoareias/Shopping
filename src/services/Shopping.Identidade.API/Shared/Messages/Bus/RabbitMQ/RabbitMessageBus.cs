@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shopping.Identidade.API.Shared.Messages.Bus
 {
-    internal abstract class RabbitMessageBus : IRabbitMessageBus
+    internal class RabbitMessageBus : IRabbitMessageBus
     {
         private IConnection _connection;
         private IModel _channel;
@@ -49,8 +49,8 @@ namespace Shopping.Identidade.API.Shared.Messages.Bus
 
             var policy = Policy.Handle<RabbitMQ.Client.Exceptions.ConnectFailureException>()
                 .Or<BrokerUnreachableException>()
-                .WaitAndRetry(3, retryAttempt =>
-                    TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+                .CircuitBreaker(2, TimeSpan.FromMinutes(2));
+
 
             policy.Execute(() =>
             {

@@ -7,10 +7,9 @@ namespace Shopping.Identidade.API.Configurations
 {
     public static class MessageBusConfig
     {
-        public static void AddMessageBusConfiguration(this IServiceCollection services,
-            IConfiguration configuration)
+        public static void AddMessageBusConfiguration(this IServiceCollection services)
         {
-            services.AddMessageBus(configuration.GetMessageQueueConnection("MessageBus"));
+            services.AddMessageBus();
         }
     }
 }
