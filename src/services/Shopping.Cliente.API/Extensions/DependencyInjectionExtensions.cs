@@ -10,7 +10,7 @@ namespace Shopping.Cliente.API.Configurations.Extensions
         {
             if (string.IsNullOrEmpty(connection)) throw new ArgumentNullException();
 
-            services.AddSingleton<IMessageBus>(new MessageBus(connection));
+            services.AddSingleton<IMessageBus, MessageBus>();
 
             return services;
         }
