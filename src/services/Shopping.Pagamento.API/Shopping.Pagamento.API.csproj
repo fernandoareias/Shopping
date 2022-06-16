@@ -1,19 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>bff34ae2-bace-470b-871d-00a04f9eb9df</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..</DockerfileContext>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
 
 </Project>
