@@ -12,7 +12,7 @@ namespace Shopping.Identidade.API.Controllers
     [Route("api/identidade")]
     public class AuthController : Controller
     {
-
+         
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
 
