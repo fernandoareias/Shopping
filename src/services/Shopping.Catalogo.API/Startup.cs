@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Shopping.Catalogo.API.Data;
 using Shopping.Catalogo.API.Data.Repositories;
 using Shopping.Catalogo.API.Models.Interfaces;
+using Shopping.Core.DomainObjects.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace Shopping.Catalogo.API
             services.AddControllers();
 
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            services.AddScoped<CatalogoContext>();
+            services.AddScoped<IUnitOfWork, CatalogoContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
