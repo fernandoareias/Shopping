@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shopping.Catalogo.API.Data;
+using Shopping.Core.WebAPI.Identidade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,10 @@ namespace Shopping.Catalogo.API.Configuration
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseCors("Total");
+
+            app.UseAuthConfiguration();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
