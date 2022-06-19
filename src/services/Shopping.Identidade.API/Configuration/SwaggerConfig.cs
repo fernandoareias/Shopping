@@ -25,7 +25,7 @@ namespace Shopping.Identidade.API.Configuration
             return service;
         }
 
-        public static IApplicationBuilder UseSwagger(this IApplicationBuilder configuration)
+        public static IApplicationBuilder UseSwaggerConfig(this IApplicationBuilder configuration)
         {
             configuration.UseSwagger();
             configuration.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
