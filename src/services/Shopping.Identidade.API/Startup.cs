@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Shopping.Core.WebAPI.Identidade;
 using Shopping.Identidade.API.Configuration;
 using Shopping.Identidade.API.Data;
 using Shopping.Identidade.API.Extensions;
@@ -55,9 +56,9 @@ namespace Shopping.Identidade.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSwagger();
+            app.UseSwaggerConfig();
             app.UseApiConfiguration(env);
-            app.UseApiConfiguration();
+            app.UseAuthConfiguration();
         }
     }
 }

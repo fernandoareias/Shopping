@@ -41,7 +41,7 @@ namespace Shopping.Catalogo.API.Data.Repositories
             _uow.Commit();
         }
 
-        public async void Dispose()
+        public void Dispose()
         {
             _context?.Dispose();
         }
