@@ -18,4 +18,8 @@
 		<PackageReference Include="System.Runtime" Version="4.3.1" />
 		
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj" />
+	</ItemGroup>
 </Project>
