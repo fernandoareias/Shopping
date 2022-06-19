@@ -13,35 +13,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{65D9C582-FBF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identidade", "Identidade", "{8E897514-2F2A-409F-A44C-E4DB2D2CF93A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Identidade.API", "src\services\Shopping.Identidade.API\Shopping.Identidade.API.csproj", "{BB4C5449-81FE-4B04-AB5C-1450C9DFB646}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Identidade.API", "src\services\Shopping.Identidade.API\Shopping.Identidade.API.csproj", "{BB4C5449-81FE-4B04-AB5C-1450C9DFB646}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{2F029BBA-2FFF-4D7F-9800-F538B7D74812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.WebApp.MVC", "src\web\Shopping.WebApp.MVC\Shopping.WebApp.MVC.csproj", "{AA575766-27A3-4265-B40E-CC9B5823682E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.WebApp.MVC", "src\web\Shopping.WebApp.MVC\Shopping.WebApp.MVC.csproj", "{AA575766-27A3-4265-B40E-CC9B5823682E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B5FF81F3-BBBE-4CF6-A52F-D85D47400CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Core", "src\building blocks\Shopping.Core\Shopping.Core.csproj", "{142C116C-376A-44FB-8044-D1240C50BE3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Core", "src\building blocks\Shopping.Core\Shopping.Core.csproj", "{142C116C-376A-44FB-8044-D1240C50BE3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Carrinho", "Carrinho", "{2B294B16-C634-4F54-8088-BE73CD6EF13A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Carrinho.API", "src\services\Shopping.Carrinho.API\Shopping.Carrinho.API.csproj", "{81D5F4F7-5556-4217-8E15-85CEB3736CBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Carrinho.API", "src\services\Shopping.Carrinho.API\Shopping.Carrinho.API.csproj", "{81D5F4F7-5556-4217-8E15-85CEB3736CBD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogo", "Catalogo", "{7B403F7B-AE2A-4A92-95F6-D007023111C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Catalogo.API", "src\services\Shopping.Catalogo.API\Shopping.Catalogo.API.csproj", "{32D83402-2EC2-432A-9CAC-DC860F90FEB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Catalogo.API", "src\services\Shopping.Catalogo.API\Shopping.Catalogo.API.csproj", "{32D83402-2EC2-432A-9CAC-DC860F90FEB6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cliente", "Cliente", "{D6228748-F979-4C97-B21E-0F182068441F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Cliente.API", "src\services\Shopping.Cliente.API\Shopping.Cliente.API.csproj", "{3ADC3A19-D703-4361-AC44-4BEE8B7E8769}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Cliente.API", "src\services\Shopping.Cliente.API\Shopping.Cliente.API.csproj", "{3ADC3A19-D703-4361-AC44-4BEE8B7E8769}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pagamento", "Pagamento", "{AAF994C7-5CD0-499D-8B0C-6726F99AD32A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Pagamento.API", "src\services\Shopping.Pagamento.API\Shopping.Pagamento.API.csproj", "{22564483-F408-495C-9998-54E0DA637531}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Pagamento.API", "src\services\Shopping.Pagamento.API\Shopping.Pagamento.API.csproj", "{22564483-F408-495C-9998-54E0DA637531}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pedido", "Pedido", "{B8F8A9FB-1525-4234-ADE5-9D3C03D0A6AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Pedido.API", "src\services\Shopping.Pedido.API\Shopping.Pedido.API.csproj", "{3302FD62-1A24-4648-9E41-C9C752208619}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Pedido.API", "src\services\Shopping.Pedido.API\Shopping.Pedido.API.csproj", "{3302FD62-1A24-4648-9E41-C9C752208619}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{94BF9898-61F4-4645-8FEA-07A5FEABEBA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Core.WebAPI", "src\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj", "{89565C02-FCAF-464E-92FA-16292C933AC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,6 +153,18 @@ Global
 		{3302FD62-1A24-4648-9E41-C9C752208619}.Release|x64.Build.0 = Release|Any CPU
 		{3302FD62-1A24-4648-9E41-C9C752208619}.Release|x86.ActiveCfg = Release|Any CPU
 		{3302FD62-1A24-4648-9E41-C9C752208619}.Release|x86.Build.0 = Release|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Debug|x64.Build.0 = Debug|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Debug|x86.Build.0 = Debug|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Release|x64.ActiveCfg = Release|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Release|x64.Build.0 = Release|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Release|x86.ActiveCfg = Release|Any CPU
+		{89565C02-FCAF-464E-92FA-16292C933AC1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,6 +189,8 @@ Global
 		{22564483-F408-495C-9998-54E0DA637531} = {AAF994C7-5CD0-499D-8B0C-6726F99AD32A}
 		{B8F8A9FB-1525-4234-ADE5-9D3C03D0A6AF} = {C699C6F4-714E-46F1-862D-3DC563E4B165}
 		{3302FD62-1A24-4648-9E41-C9C752208619} = {B8F8A9FB-1525-4234-ADE5-9D3C03D0A6AF}
+		{94BF9898-61F4-4645-8FEA-07A5FEABEBA9} = {C621DFCE-9F34-4983-986C-3746DBC5C512}
+		{89565C02-FCAF-464E-92FA-16292C933AC1} = {94BF9898-61F4-4645-8FEA-07A5FEABEBA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7CC835DA-C9BF-47A1-A98B-3D5D735345EF}
