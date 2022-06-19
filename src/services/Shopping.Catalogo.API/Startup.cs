@@ -12,6 +12,7 @@ using Shopping.Catalogo.API.Data;
 using Shopping.Catalogo.API.Data.Repositories;
 using Shopping.Catalogo.API.Models.Interfaces;
 using Shopping.Core.DomainObjects.Data;
+using Shopping.Core.WebAPI.Identidade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,7 @@ namespace Shopping.Catalogo.API
             services.UseAddApiService(Configuration);
             services.UseDependencyInjectionConfig();
             services.UseAddSwagger();
+            services.AddJwtConfiguration(Configuration);
 
 
         }

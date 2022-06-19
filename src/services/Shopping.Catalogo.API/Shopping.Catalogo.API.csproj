@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj" />
     <ProjectReference Include="..\..\building blocks\Shopping.Core\Shopping.Core.csproj" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.3" />
