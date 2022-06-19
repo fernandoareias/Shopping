@@ -61,4 +61,4 @@ namespace Shopping.Core.DomainObjects.ValueObjects
 		}
 	}
 }
-}
+

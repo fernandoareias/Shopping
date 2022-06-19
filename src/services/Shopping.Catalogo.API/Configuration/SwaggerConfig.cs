@@ -31,7 +31,7 @@ namespace Shopping.Catalogo.API.Configuration
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 });
-                ''
+                
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement 
                 {
                     {
