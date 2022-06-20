@@ -11,7 +11,7 @@ using Shopping.Catalogo.API.Configuration;
 using Shopping.Catalogo.API.Data;
 using Shopping.Catalogo.API.Data.Repositories;
 using Shopping.Catalogo.API.Models.Interfaces;
-using Shopping.Core.DomainObjects.Data;
+using Shopping.Core.Data;
 using Shopping.Core.WebAPI.Identidade;
 using System;
 using System.Collections.Generic;

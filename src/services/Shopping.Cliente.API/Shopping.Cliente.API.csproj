@@ -2,17 +2,32 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>cdf78761-6436-437e-950d-0168a7132346</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Events\" />
+    <Folder Include="Application\Queries\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Application\" />
-    <Folder Include="Configuration\" />
-    <Folder Include="Data\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.3" />
+	  <PackageReference Include="Serilog" Version="2.11.0-dev-01371" />
+	  <PackageReference Include="Serilog.AspNetCore" Version="4.1.1-dev-00229" />
+	  <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
+	  <PackageReference Include="MediatR" Version="8.0.1" />
+	  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj" />
     <ProjectReference Include="..\..\building blocks\Shopping.Core\Shopping.Core.csproj" />
   </ItemGroup>
 

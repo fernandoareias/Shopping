@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Shopping.Core.DomainObjects.Resources.Extensions
+namespace Shopping.Core.Resources.Extensions
 {
     public static class StringExtensions
     {

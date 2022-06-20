@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shopping.Core.DomainObjects.Interfaces
+namespace Shopping.Core.Interfaces
 {
     public interface IAggregateRoot
     {

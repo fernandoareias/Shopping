@@ -1,5 +1,5 @@
 ﻿using Shopping.Core.DomainObjects;
-using Shopping.Core.DomainObjects.Interfaces;
+using Shopping.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

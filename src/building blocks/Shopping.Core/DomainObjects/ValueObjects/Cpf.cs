@@ -1,5 +1,5 @@
 ﻿using Shopping.Core.DomainObjects.Exceptions;
-using Shopping.Core.DomainObjects.Resources.Extensions;
+using Shopping.Core.Resources.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;

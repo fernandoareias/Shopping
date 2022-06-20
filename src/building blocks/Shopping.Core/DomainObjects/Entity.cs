@@ -6,7 +6,7 @@ namespace Shopping.Core.DomainObjects
 {
     public abstract class Entity
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; } = Guid.NewGuid();
 
 
         public override bool Equals(object obj)
