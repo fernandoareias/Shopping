@@ -1,4 +1,4 @@
-﻿using Shopping.Core.DomainObjects.Data.Interfaces;
+﻿using Shopping.Core.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

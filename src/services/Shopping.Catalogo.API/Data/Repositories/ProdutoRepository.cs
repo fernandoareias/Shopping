@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shopping.Catalogo.API.Models;
 using Shopping.Catalogo.API.Models.Interfaces;
-using Shopping.Core.DomainObjects.Data;
+using Shopping.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
