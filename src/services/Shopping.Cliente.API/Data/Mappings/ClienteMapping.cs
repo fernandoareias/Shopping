@@ -37,7 +37,7 @@ namespace Shopping.Cliente.API.Data.Mappings
 
             builder.HasOne(navigationExpression: c => c.Endereco)
                 .WithOne(navigationExpression: c => c.Cliente);
-
+            builder.Ignore(c => c.Notificacoes);
             builder.ToTable("Clientes");
         }
     }

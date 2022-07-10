@@ -105,7 +105,7 @@ namespace Shopping.Identidade.API.Controllers
 
             if (result.IsLockedOut)
             {
-                AdicionarErroProcessamento("Usuário temporarimanete bloqueado por tentativas inválidas.");
+                AdicionarErroProcessamento("Usuário temporariamente bloqueado por tentativas inválidas.");
                 return CustomResponse();
             }
 

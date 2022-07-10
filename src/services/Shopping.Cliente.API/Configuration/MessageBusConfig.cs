@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Shopping.Cliente.API.Services;
 using Shopping.MessageBus;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace Shopping.Cliente.API.Configuration
     {
         public static IServiceCollection RegistraMessageBus(this IServiceCollection service, IConfiguration configuration)
         {
-            service.AddMessageBus(configuration.GetSection("MessageQueueConnection")?["MessageBus"]);
+            service.AddMessageBus(configuration.GetSection("MessageQueueConnection")?["MessageBus"])
+                .AddHostedService<RegistroClienteIntegrationHandler>();
 
             return service;
         }
