@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shopping.Core.Data;
+using Shopping.Core.DomainObjects;
+using Shopping.Core.Mediator;
+using Shopping.Core.Resources.Extensions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,11 +10,12 @@ namespace Shopping.Cliente.API.Data
 {
     public class ClientesContext : DbContext, IUnitOfWork
     {
-
-        public ClientesContext(DbContextOptions<ClientesContext> options) : base(options)
+        private readonly IMediatorHandler _mediatorHandler;
+        public ClientesContext(DbContextOptions<ClientesContext> options, IMediatorHandler mediatorHandler) : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
+            _mediatorHandler = mediatorHandler;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,7 +30,15 @@ namespace Shopping.Cliente.API.Data
 
         public async Task<bool> Commit()
         {
-            return await base.SaveChangesAsync() > 0;
+            var sucesso = await base.SaveChangesAsync() > 0;
+
+            if (sucesso) 
+                await _mediatorHandler.PublicarEventos(this);
+
+            return sucesso;
         }
     }
+
+    
+
 }

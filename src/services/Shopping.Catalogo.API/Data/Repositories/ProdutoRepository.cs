@@ -14,6 +14,8 @@ namespace Shopping.Catalogo.API.Data.Repositories
         private readonly CatalogoContext _context;
         private readonly IUnitOfWork _uow;
 
+        public IUnitOfWork UnitOfWork { get { return _uow; } }
+
         public ProdutoRepository(CatalogoContext context, IUnitOfWork uow)
         {
             _context = context;

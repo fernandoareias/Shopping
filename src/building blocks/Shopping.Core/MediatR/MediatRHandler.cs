@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shopping.Core.Mediator
 {
-    public class MediatRHandler : IMediatRHandler
+    public class MediatRHandler : IMediatorHandler
     {
         private readonly IMediator _mediator;
 
