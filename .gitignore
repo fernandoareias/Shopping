@@ -27,3 +27,5 @@
 /src/web/Shopping.WebApp.MVC/obj
 /src/building blocks/Shopping.Core.WebAPI/bin/Debug/netcoreapp3.1
 /src/building blocks/Shopping.Core.WebAPI/obj
+/src/building blocks/Shopping.MessageBus/bin/Debug/netcoreapp3.1
+/src/building blocks/Shopping.MessageBus/obj

@@ -6,6 +6,7 @@ using Shopping.Cliente.API.Application.Commands.Handles;
 using Shopping.Cliente.API.Application.Events;
 using Shopping.Cliente.API.Application.Events.Handles;
 using Shopping.Cliente.API.Data;
+using Shopping.Cliente.API.Services;
 using Shopping.Core.Data;
 using Shopping.Core.Mediator;
 
@@ -20,6 +21,7 @@ namespace Shopping.Cliente.API.Configuration
             service.AddScoped<INotificationHandler<ClienteRegistradoEvent>, ClienteEventHandlers>();
             service.AddScoped<IUnitOfWork, ClientesContext>();
 
+            service.AddHostedService<RegistroClienteIntegrationHandler>();
             return service;
         }
     }

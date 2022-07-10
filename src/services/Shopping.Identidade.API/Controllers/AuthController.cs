@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using EasyNetQ;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver.Core.WireProtocol.Messages;
+using Shopping.Core.Messages.Integration;
 using Shopping.Identidade.API.Extensions;
 using Shopping.Identidade.API.Models;
+using Shopping.MessageBus;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -23,14 +27,17 @@ namespace Shopping.Identidade.API.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
+        private readonly IMessageBus _bus;
+
         public AuthController(
             SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager, 
-            IOptions<AppSettings> appSettings)
+            UserManager<IdentityUser> userManager,
+            IOptions<AppSettings> appSettings, IMessageBus bus)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _appSettings = appSettings.Value;
+            _bus = bus;
         }
 
         [HttpPost("nova-conta")]
@@ -49,12 +56,39 @@ namespace Shopping.Identidade.API.Controllers
             var result = await _userManager.CreateAsync(user, usuarioRegistro.Senha);
 
             if (result.Succeeded)
+            {
+                var clienteResult = await RegistrarCliente(usuarioRegistro);
+
+                if(!clienteResult.ValidationResult.IsValid)
+                {
+                    await _userManager.DeleteAsync(user);
+                    return CustomResponse(clienteResult.ValidationResult);
+                }
+
                 return CustomResponse(GerarJwt(usuarioRegistro.Email));
+            }
 
             foreach (var erro in result.Errors)
                 AdicionarErroProcessamento(erro.Description);
 
             return CustomResponse();
+        }
+
+        private async Task<Shopping.Core.Messages.Integration.ResponseMessage> RegistrarCliente(UsuarioRegistro usuarioRegistro)
+        {
+            var usuario = await _userManager.FindByEmailAsync(usuarioRegistro.Email);
+            var usuarioRegistrado = new UsuarioRegistradoIntegrationEvent(Guid.Parse(usuario.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf);
+
+            try
+            {
+                return await _bus.RequestAsync<UsuarioRegistradoIntegrationEvent, Shopping.Core.Messages.Integration.ResponseMessage>(usuarioRegistrado);
+            }
+            catch (Exception)
+            {
+                await _userManager.DeleteAsync(usuario);
+                throw;
+            }
+            
         }
 
         [HttpPost("autenticar")]
