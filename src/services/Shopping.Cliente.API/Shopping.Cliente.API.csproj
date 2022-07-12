@@ -6,10 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Events\" />
     <Folder Include="Application\Queries\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +27,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj" />
     <ProjectReference Include="..\..\building blocks\Shopping.Core\Shopping.Core.csproj" />
+    <ProjectReference Include="..\..\building blocks\Shopping.MessageBus\Shopping.MessageBus.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 
 </Project>

@@ -3,7 +3,12 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Shopping.Cliente.API.Application.Commands;
 using Shopping.Cliente.API.Application.Commands.Handles;
+using Shopping.Cliente.API.Application.Events;
+using Shopping.Cliente.API.Application.Events.Handles;
 using Shopping.Cliente.API.Data;
+using Shopping.Cliente.API.Data.Repositories;
+using Shopping.Cliente.API.Models.Interfaces;
+using Shopping.Cliente.API.Services;
 using Shopping.Core.Data;
 using Shopping.Core.Mediator;
 
@@ -13,10 +18,13 @@ namespace Shopping.Cliente.API.Configuration
     {
         public static IServiceCollection RegistraServices(this IServiceCollection service)
         {
-            service.AddScoped<IMediatRHandler, MediatRHandler>();
-            service.AddScoped<IRequestHandler<RegistrarClienteCommand, ValidationResult>, ClienteCommandHandler>();
+            service.AddScoped<IMediatorHandler, MediatRHandler>();
             service.AddScoped<IUnitOfWork, ClientesContext>();
+            service.AddScoped<IRequestHandler<RegistrarClienteCommand, ValidationResult>, ClienteCommandHandler>();
+            service.AddScoped<INotificationHandler<ClienteRegistradoEvent>, ClienteEventHandlers>();
+            service.AddScoped<IClienteRepository, ClienteRepository>();
 
+            //service.AddHostedService<RegistroClienteIntegrationHandler>();
             return service;
         }
     }

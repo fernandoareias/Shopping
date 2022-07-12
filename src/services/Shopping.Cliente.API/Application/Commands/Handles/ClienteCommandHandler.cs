@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using MediatR;
+using Shopping.Cliente.API.Application.Events;
 using Shopping.Cliente.API.Models;
 using Shopping.Cliente.API.Models.Interfaces;
 using Shopping.Core.Messages;
@@ -35,6 +36,8 @@ namespace Shopping.Cliente.API.Application.Commands.Handles
             var cliente = new Shopping.Cliente.API.Models.Cliente(message.Nome, message.Email, message.Cpf);
 
             _clienteRepository.Adicionar(cliente);
+
+            cliente.AdicionarEvento(new ClienteRegistradoEvent(cliente.Id, cliente.Nome, cliente.Email.Endereco, cliente.Cpf.Numero));
 
             return await PersistirDados(_clienteRepository.UnitOfWork);
         }

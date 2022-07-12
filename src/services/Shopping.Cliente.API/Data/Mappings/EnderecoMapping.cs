@@ -13,7 +13,7 @@ namespace Shopping.Cliente.API.Data.Mappings
         public void Configure(EntityTypeBuilder<Endereco> builder)
         {
             builder.HasKey(keyExpression: c => c.Id);
-
+            builder.Ignore(c => c.Notificacoes);
             builder.Property(c => c.Logradouro)
                 .IsRequired()
                 .HasColumnType("varchar(200)");
