@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shopping.Carrinho.API.Data;
 using Shopping.Core.WebAPI.Identidade;
 
 namespace Shopping.Carrinho.API.Configuration
@@ -11,7 +13,7 @@ namespace Shopping.Carrinho.API.Configuration
     {
         public static IServiceCollection UseAddApiService(this IServiceCollection service, IConfiguration configuration)
         {
-            //service.AddDbContext<ClientesContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            service.AddDbContext<CarrinhoContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             service.AddControllers();
 
             service.AddCors(options => 
