@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shopping.Carrinho.API.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shopping.Carrinho.API.Data
 {
-    public sealed class CarrinhoContext : DbContext
+    public sealed  class CarrinhoContext : DbContext
     {
         public CarrinhoContext(DbContextOptions<CarrinhoContext> options) : base(options)
         {
@@ -16,15 +13,15 @@ namespace Shopping.Carrinho.API.Data
         }
 
 
-        public DbSet<CarrinhoItem> CarrinhoItens { get; set; }
-        public DbSet<CarrinhoCliente> CarrinhoCliente { get; set; }
+        public DbSet<CarrinhoItem> CarrinhoItem { get; set; }
+        public DbSet<CarrinhoCliente> CarrinhoClientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var prop in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 prop.SetColumnType("varchar(100)");
 
-            //            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClientesContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CarrinhoContext).Assembly);
 
             modelBuilder
                 .Entity<CarrinhoCliente>()

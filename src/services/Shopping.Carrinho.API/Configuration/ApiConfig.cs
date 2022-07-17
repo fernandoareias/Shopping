@@ -13,12 +13,20 @@ namespace Shopping.Carrinho.API.Configuration
     {
         public static IServiceCollection UseAddApiService(this IServiceCollection service, IConfiguration configuration)
         {
-            service.AddDbContext<CarrinhoContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            service.AddDbContext<CarrinhoContext>(
+                options => options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection")
+                    )
+                );
+            
             service.AddControllers();
 
             service.AddCors(options => 
             {
-                options.AddPolicy(name: "Total", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+                options.AddPolicy(
+                    name: "Total", 
+                    builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+                );
             });
 
             return service;

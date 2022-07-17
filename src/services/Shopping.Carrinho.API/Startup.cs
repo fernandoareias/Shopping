@@ -27,10 +27,10 @@ namespace Shopping.Carrinho.API
                 .AddJsonFile(path: $"appsettings.{hostEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
 
-            if (hostEnvironment.IsDevelopment())
+           /* if (hostEnvironment.IsDevelopment())
             {
                 builder.AddUserSecrets<Startup>();
-            }
+            }*/
 
             Configuration = builder.Build();
 
