@@ -15,7 +15,7 @@ namespace Shopping.Bff.Compras.Configuration.Configuration
                 {
                     Title = "Shopping Compras BFF API Gateway",
                     Description = "Esta API faz parte do projeto Shopping",
-                    Contact = new OpenApiContact() {Name = "Eduardo Pires", Email = "contato@desenvolvedor.io"},
+                    Contact = new OpenApiContact() {Name = "Fernando Calheiros", Email = "nando.calheirosx@gmail.com"},
                     License = new OpenApiLicense() {Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT")}
                 });
 
