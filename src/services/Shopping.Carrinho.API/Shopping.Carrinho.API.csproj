@@ -28,5 +28,21 @@
 		<PackageReference Include="Serilog.AspNetCore" Version="4.1.1-dev-00229" />
 		<PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Models\Interfaces\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Remove="Models\Interfaces\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Models\Interfaces\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="Models\Interfaces\**" />
+	</ItemGroup>
 	
 </Project>

@@ -13,7 +13,7 @@ namespace Shopping.Carrinho.API.Data
         }
 
 
-        public DbSet<CarrinhoItem> CarrinhoItem { get; set; }
+        public DbSet<CarrinhoItem> CarrinhoItens { get; set; }
         public DbSet<CarrinhoCliente> CarrinhoClientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
