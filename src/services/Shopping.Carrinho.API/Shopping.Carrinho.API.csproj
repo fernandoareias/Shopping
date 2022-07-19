@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj" />
     <ProjectReference Include="..\..\building blocks\Shopping.Core\Shopping.Core.csproj" />
+    <ProjectReference Include="..\..\gateways\Shopping.Bff.Compras\Shopping.Bff.Compras.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

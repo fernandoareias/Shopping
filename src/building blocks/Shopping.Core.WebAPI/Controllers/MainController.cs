@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Shopping.Core.Communication;
 
 namespace Shopping.Core.WebAPI.Controllers
 {
@@ -32,6 +33,17 @@ namespace Shopping.Core.WebAPI.Controllers
             return CustomResponse();
         }
 
+        protected bool ResponsePossuiErros(ResponseResult response)
+        {
+            if (response == null || !response.Errors.Mensagens.Any())
+                return false;
+
+            foreach (var mensagem in response.Errors.Mensagens)
+                AdicionarErroProcessamento(mensagem);
+
+            return true;
+        }
+        
         protected bool OperacaoValida()
             => !Erros.Any();
 
