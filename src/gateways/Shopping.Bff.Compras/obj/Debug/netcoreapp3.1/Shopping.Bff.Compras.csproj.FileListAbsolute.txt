@@ -192,3 +192,6 @@
 /home/fcalheiros/dev/Shopping/src/gateways/Shopping.Bff.Compras/obj/Debug/netcoreapp3.1/Shopping.Bff.Compras.dll
 /home/fcalheiros/dev/Shopping/src/gateways/Shopping.Bff.Compras/obj/Debug/netcoreapp3.1/Shopping.Bff.Compras.pdb
 /home/fcalheiros/dev/Shopping/src/gateways/Shopping.Bff.Compras/obj/Debug/netcoreapp3.1/Shopping.Bff.Compras.genruntimeconfig.cache
+/home/fcalheiros/dev/Shopping/src/gateways/Shopping.Bff.Compras/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Http.dll
+/home/fcalheiros/dev/Shopping/src/gateways/Shopping.Bff.Compras/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Http.Polly.dll
+/home/fcalheiros/dev/Shopping/src/gateways/Shopping.Bff.Compras/bin/Debug/netcoreapp3.1/Polly.Extensions.Http.dll
