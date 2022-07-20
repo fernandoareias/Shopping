@@ -1,4 +1,4 @@
-﻿using NSE.WebAPI.Core.Usuario;
+﻿using Shopping.WebAPI.Core.Usuario;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
