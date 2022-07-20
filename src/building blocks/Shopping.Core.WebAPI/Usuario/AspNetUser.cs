@@ -2,9 +2,21 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Shopping.Core.WebAPI.Usuario;
 
 namespace Shopping.WebAPI.Core.Usuario
 {
+    public interface IAspNetUser
+    {
+        Guid ObterUserId();
+        string ObterUserEmail();
+        string ObterUserToken();
+        bool EstaAutenticado();
+        bool PossuiRole(string role);
+        IEnumerable<Claim> ObterClaims();
+        HttpContext ObterHttpContext();
+    }
+
     public class AspNetUser : IAspNetUser
     {
         private readonly IHttpContextAccessor _accessor;
