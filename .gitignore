@@ -32,3 +32,4 @@
 /src/building blocks/Shopping.MessageBus/obj
 /src/gateways/Shopping.Bff.Compras/bin/Debug/netcoreapp3.1
 /src/gateways/Shopping.Bff.Compras/obj/Container
+/src/gateways/Shopping.Bff.Compras/obj/Debug/netcoreapp3.1
