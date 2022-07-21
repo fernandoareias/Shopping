@@ -14,6 +14,7 @@ namespace Shopping.Bff.Compras.Services
         Task<ResponseResult> AdicionarItemCarrinho(ItemCarrinhoDto produto);
         Task<ResponseResult> AtualizarItemCarrinho(Guid produtoId, ItemCarrinhoDto carrinho);
         Task<ResponseResult> RemoverItemCarrinho(Guid produtoId);
+        Task<ResponseResult> AplicarVoucherCarrinho(VoucherDTO voucher);
     }
 
     public class CarrinhoService : Service, ICarrinhoService
@@ -64,6 +65,18 @@ namespace Shopping.Bff.Compras.Services
             TratarErrosResponse(response);
 
             return await DeserializarObjetoResponse<ResponseResult>(response);
+        }
+
+        public async Task<ResponseResult> AplicarVoucherCarrinho(VoucherDTO voucher)
+        {
+            var itemContent = ObterConteudo(voucher);
+
+            var response = await _httpClient.PostAsync("/carrinho/aplicar-voucher/", itemContent);
+            
+            if(!TratarErrosResponse(response))
+                return await DeserializarObjetoResponse<ResponseResult>(response);
+
+            return new ResponseResult() { Status = 200};
         }
     }
 }

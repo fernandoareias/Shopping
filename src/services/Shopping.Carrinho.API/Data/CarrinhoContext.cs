@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
 using Shopping.Carrinho.API.Models;
+using Shopping.Core.Messages;
 using System.Linq;
 
 namespace Shopping.Carrinho.API.Data
@@ -23,6 +25,9 @@ namespace Shopping.Carrinho.API.Data
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CarrinhoContext).Assembly);
 
+            modelBuilder.Ignore<Event>();
+            modelBuilder.Ignore<ValidationResult>();
+
             modelBuilder
                 .Entity<CarrinhoCliente>()
                 .HasIndex(c => c.ClienteId)
@@ -30,6 +35,22 @@ namespace Shopping.Carrinho.API.Data
 
             modelBuilder
                 .Entity<CarrinhoCliente>()
+                .Ignore(c => c.Voucher)
+                .OwnsOne(c => c.Voucher, v => 
+                {
+                    v.Property(vc => vc.Codigo)
+                    .HasColumnName("VoucherCodigo")
+                    .HasColumnType("varchar(50)");
+
+                    v.Property(vc => vc.TipoDesconto)
+                    .HasColumnName("TipoDesconto");
+
+                    v.Property(vc => vc.Percentual)
+                    .HasColumnName("Percentual");
+
+                    v.Property(vc => vc.ValorDesconto)
+                    .HasColumnName("ValorDesconto");
+                })
                 .HasMany(c => c.Itens)
                 .WithOne(i => i.CarrinhoCliente)
                 .HasForeignKey(c => c.CarrinhoId);
