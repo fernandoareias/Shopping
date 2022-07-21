@@ -20,6 +20,8 @@ namespace Shopping.Pedido.Infra.Data
             _mediator = mediator;
         }
 
+        public DbSet<Pedido.Domain.Pedidos.Pedido> Pedidos { get; set; }
+        public DbSet<Pedido.Domain.Pedidos.PedidoItem> PedidoItems { get; set; }
         public DbSet<Voucher> Voucher { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,11 +35,30 @@ namespace Shopping.Pedido.Infra.Data
 
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(PedidoContext).Assembly);
+
+
+            foreach (var prop in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) 
+                prop.DeleteBehavior = DeleteBehavior.ClientSetNull;
+
+            modelBuilder.HasSequence<int>("MinhaSequencia").StartsAt(1000).IncrementsBy(1);
+
+            base.OnModelCreating(modelBuilder);
+
         }
 
 
         public async Task<bool> Commit()
         {
+
+            foreach(var entry in ChangeTracker.Entries().Where(e => e.Entity.GetType().GetProperty("DataCadastro") != null))
+            {
+                if (entry.State == EntityState.Added)
+                    entry.Property("DataCadastro").CurrentValue = System.DateTime.Now;
+
+                if (entry.State == EntityState.Modified)
+                    entry.Property("DataCadastro").IsModified = false;
+            }
+
             var sucesso = await base.SaveChangesAsync() > 0;
 
             if (sucesso)
