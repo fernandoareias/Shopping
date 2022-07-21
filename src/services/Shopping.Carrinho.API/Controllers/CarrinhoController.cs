@@ -83,6 +83,21 @@ namespace Shopping.Carrinho.API.Controllers
             await PersistirDados();
             return CustomResponse();
         }
+
+
+        [HttpPost]
+        [Route("carrinho/aplicar-voucher")]
+        public async Task<IActionResult> AplicarVoucher(Voucher voucher)
+        {
+            var carrinho = await ObterCarrinho();
+
+            carrinho.AplicarVoucher(voucher);
+
+            _context.CarrinhoClientes.Update(carrinho);
+
+            await PersistirDados();
+            return CustomResponse();
+        }
         #endregion
         
         private async Task<CarrinhoCliente> ObterCarrinhoCliente()
