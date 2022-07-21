@@ -32,3 +32,7 @@
 /src/building blocks/Shopping.MessageBus/obj
 src/gateways/Shopping.Bff.Compras/bin
 src/gateways/Shopping.Bff.Compras/obj
+/src/services/Shopping.Pedido.Domain/bin/Debug/netcoreapp3.1
+/src/services/Shopping.Pedido.Domain/obj
+/src/services/Shopping.Pedido.Infra/bin/Debug/netcoreapp3.1
+/src/services/Shopping.Pedido.Infra/obj

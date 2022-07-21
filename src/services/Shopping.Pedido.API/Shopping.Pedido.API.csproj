@@ -10,7 +10,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Commands\" />
+    <Folder Include="Application\Events\" />
+    <Folder Include="Application\Queries\" />
     <Folder Include="Controllers" />
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shopping.Pedido.Domain\Shopping.Pedido.Domain.csproj" />
+    <ProjectReference Include="..\Shopping.Pedido.Infra\Shopping.Pedido.Infra.csproj" />
   </ItemGroup>
 
 
