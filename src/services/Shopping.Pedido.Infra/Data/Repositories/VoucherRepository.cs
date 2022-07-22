@@ -27,6 +27,10 @@ namespace Shopping.Pedido.Infra.Data.Repositories
             return _context.Voucher.FirstOrDefaultAsync(f => f.Codigo == codigo);
         }
 
+        public void Atualizar(Voucher voucher)
+        {
+            _context.Voucher.Update(voucher);
+        }
         public void Dispose()
         {
             _context?.Dispose();

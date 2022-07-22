@@ -5,6 +5,7 @@ using Shopping.Pedido.Domain.Pedidos.ValueObjects;
 using Shopping.Pedido.Domain.Vouchers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Shopping.Pedido.Domain.Pedidos
@@ -55,6 +56,12 @@ namespace Shopping.Pedido.Domain.Pedidos
 
         public void AtribuirEndereco(Endereco endereco)
             => this.Endereco = endereco;
+
+        public void CalcularPedido()
+        {
+            ValorTotal = _pedidoItems.Sum(c => c.ValorUnitario);
+            CalcularValorTotalDesconto();
+        }
 
         private void CalcularValorTotalDesconto()
         {

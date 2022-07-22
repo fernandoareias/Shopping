@@ -9,5 +9,6 @@ namespace Shopping.Pedido.Domain.Vouchers.Interfaces
     public interface IVoucherRepository : IRepository<Voucher>
     {
         Task<Voucher> ObterVoucherPorCodigoAsync(string codigo);
+        void Atualizar(Voucher voucher);
     }
 }

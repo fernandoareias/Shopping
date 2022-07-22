@@ -23,10 +23,6 @@
 		<PackageReference Include="MediatR" Version="8.0.1" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
 	</ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Application\Events\" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj" />

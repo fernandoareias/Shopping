@@ -1,8 +1,11 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 using Shopping.Core.Messages;
+using Shopping.Pedido.API.Application.Events;
+using Shopping.Pedido.Domain.Pedidos.Interfaces;
 using Shopping.Pedido.Domain.Pedidos.ValueObjects;
 using Shopping.Pedido.Domain.Vouchers.Interfaces;
+using Shopping.Pedido.Domain.Vouchers.Specs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +18,12 @@ namespace Shopping.Pedido.API.Application.Commands
     {
 
         private readonly IVoucherRepository _voucherRepository;
+        private readonly IPedidoRepository _pedidoRepository;
 
-        public PedidoCommandHandler(IVoucherRepository voucherRepository)
+        public PedidoCommandHandler(IVoucherRepository voucherRepository, IPedidoRepository pedidoRepository)
         {
             _voucherRepository = voucherRepository;
+            _pedidoRepository = pedidoRepository;
         }
 
         public async Task<ValidationResult> Handle(AdicionarPedidoCommand request, CancellationToken cancellationToken)
@@ -27,6 +32,20 @@ namespace Shopping.Pedido.API.Application.Commands
                 return request.ValidationResult;
 
             var pedido = MapearPedido(request);
+
+            if (!await AplicarVoucher(request, pedido)) 
+                return ValidationResult;
+
+            if(!ProcessarPagamento(pedido))
+                return ValidationResult;
+
+            pedido.AutorizarPedido();
+
+            pedido.AdicionarEvento(new PedidoRealizadoEvent(pedido.Id, pedido.ClienteId));
+
+            _pedidoRepository.Adicionar(pedido);
+
+            return await PersistirDados(_pedidoRepository.UnitOfWork);
 
         }
 
@@ -42,7 +61,27 @@ namespace Shopping.Pedido.API.Application.Commands
             return pedido;
         }
     
-    
+        private bool ValidarPedido(Pedido.Domain.Pedidos.Pedido pedido)
+        {
+            var pedidoValorOriginal = pedido.ValorTotal;
+            var pedidoDesconto = pedido.Desconto;
+
+            pedido.CalcularPedido();
+
+            if(pedido.ValorTotal != pedidoValorOriginal)
+            {
+                AdicionarErro("O valor total do pedido não confere com o cálculo do pedido");
+                return false;
+            }
+
+            if(pedido.Desconto != pedidoDesconto)
+            {
+                AdicionarErro("O valor total não confere com o cálculo do pedido");
+                return false;
+            }
+
+            return true;
+        }
         private async Task<bool> AplicarVoucher(AdicionarPedidoCommand message, Pedido.Domain.Pedidos.Pedido pedido)
         {
             if (!message.VoucherUtilizado)
@@ -71,6 +110,11 @@ namespace Shopping.Pedido.API.Application.Commands
 
             return true;
 
+        }
+  
+        public bool ProcessarPagamento(Pedido.Domain.Pedidos.Pedido pedido)
+        {
+            return true;
         }
     }
 }

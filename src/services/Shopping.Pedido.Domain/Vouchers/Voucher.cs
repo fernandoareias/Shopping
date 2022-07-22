@@ -20,7 +20,15 @@ namespace Shopping.Pedido.Domain.Vouchers
         public bool Ativo { get; private set; }
         public bool Utilizado { get; private set; }
 
+        public void DebitarQuantidade()
+        {
+            Quantidade -= 1;
+            if (Quantidade >= 1) return;
 
+            Ativo = false;
+            Utilizado = true;
+            DataUtilizacao = DateTime.Now;
+        }
         public bool EstaValidoParaUso()
         {
             return new VoucherAtivoSpecification()
