@@ -34,5 +34,7 @@ namespace Shopping.Pedido.Domain.Pedidos
 
         internal decimal CalcularValor() => Quantidade * ValorUnitario;
 
+        
+
     }
 }

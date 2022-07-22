@@ -28,6 +28,7 @@
     <ProjectReference Include="..\..\building blocks\Shopping.Core.WebAPI\Shopping.Core.WebAPI.csproj" />
     <ProjectReference Include="..\..\building blocks\Shopping.Core\Shopping.Core.csproj" />
     <ProjectReference Include="..\..\building blocks\Shopping.MessageBus\Shopping.MessageBus.csproj" />
+    <ProjectReference Include="..\Shopping.Pedido.Domain\Shopping.Pedido.Domain.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

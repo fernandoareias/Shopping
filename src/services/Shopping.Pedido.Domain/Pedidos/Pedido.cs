@@ -53,6 +53,9 @@ namespace Shopping.Pedido.Domain.Pedidos
             Voucher = voucher;
         }
 
+        public void AtribuirEndereco(Endereco endereco)
+            => this.Endereco = endereco;
+
         private void CalcularValorTotalDesconto()
         {
             if (!VoucherUtilizado) return;
