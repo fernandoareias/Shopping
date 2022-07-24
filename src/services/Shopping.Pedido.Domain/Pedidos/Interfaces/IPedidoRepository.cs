@@ -1,6 +1,7 @@
 ﻿using Shopping.Core.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace Shopping.Pedido.Domain.Pedidos.Interfaces
         void Adicionar(Pedido pedido);
         void Atualizar(Pedido pedido);
 
+        DbConnection ObterConexao();
 
         // Pedido Item
         Task<PedidoItem> ObterItemPorId(Guid id);

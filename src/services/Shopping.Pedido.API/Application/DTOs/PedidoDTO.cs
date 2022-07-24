@@ -18,6 +18,11 @@ namespace Shopping.Pedido.API.Application.DTOs
         public List<PedidoItemDTO> PedidoItems { get; set; }
         public EnderecoDTO Endereco { get; set; }
 
+        public PedidoDTO()
+        {
+
+        }
+
         public PedidoDTO(Pedido.Domain.Pedidos.Pedido pedido)
         {
             this.Id = pedido.Id;

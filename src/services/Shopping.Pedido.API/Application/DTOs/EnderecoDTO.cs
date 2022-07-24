@@ -17,6 +17,10 @@ namespace Shopping.Pedido.API.Application.DTOs
         public string Cidade { get; set; }
         public string Estado { get; set; }
 
+        public EnderecoDTO()
+        {
+
+        }
         public EnderecoDTO(Endereco endereco)
         {
             this.Logradouro = endereco.Logradouro;

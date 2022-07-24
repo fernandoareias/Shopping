@@ -8,13 +8,17 @@ namespace Shopping.Pedido.API.Application.DTOs
 {
     public class PedidoItemDTO
     {
-        public Guid PedidoId { get; private set; }
-        public Guid ProdutoId { get; private set; }
-        public string ProdutoNome { get; private set; }
-        public int Quantidade { get; private set; }
-        public decimal ValorUnitario { get; private set; }
+        public Guid PedidoId { get; set; }
+        public Guid ProdutoId { get; set; }
+        public string ProdutoNome { get; set; }
+        public int Quantidade { get; set; }
+        public decimal ValorUnitario { get; set; }
         public string ProdutoImagem { get; set; }
 
+        public PedidoItemDTO()
+        {
+
+        }
 
         public PedidoItemDTO(PedidoItem pedidoItem)
         {

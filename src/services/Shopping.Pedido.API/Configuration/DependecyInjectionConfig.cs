@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation.Results;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 using Shopping.Core.Data;
 using Shopping.Core.Mediator;
+using Shopping.Pedido.API.Application.Commands;
+using Shopping.Pedido.API.Application.Events;
 using Shopping.Pedido.API.Application.Queries;
 using Shopping.Pedido.Domain.Vouchers.Interfaces;
 using Shopping.Pedido.Infra.Data;
@@ -27,6 +31,10 @@ namespace Shopping.Pedido.API.Configuration
             // Data
             service.AddScoped<PedidoContext>();
             service.AddScoped<IVoucherRepository, VoucherRepository>();
+
+
+            service.AddScoped<IRequestHandler<AdicionarPedidoCommand, ValidationResult>, PedidoCommandHandler>();
+            service.AddScoped<INotificationHandler<PedidoRealizadoEvent>, PedidoEventHandler>();
 
             return service;
         }

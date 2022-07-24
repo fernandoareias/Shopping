@@ -1,4 +1,5 @@
 ﻿using Shopping.Core.Messages;
+using Shopping.Core.Messages.Integration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Shopping.Pedido.API.Application.Events
 {
-    public class PedidoRealizadoEvent : Event
+    public class PedidoRealizadoEvent : IntegrationEvent
     {
-        protected PedidoRealizadoEvent()
+        public PedidoRealizadoEvent()
         {
 
         }

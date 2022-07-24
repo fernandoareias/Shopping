@@ -4,6 +4,7 @@ using Shopping.Pedido.Domain.Pedidos;
 using Shopping.Pedido.Domain.Pedidos.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,5 +61,9 @@ namespace Shopping.Pedido.Infra.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public DbConnection ObterConexao()
+            => _context.Database.GetDbConnection();
+        
     }
 }
